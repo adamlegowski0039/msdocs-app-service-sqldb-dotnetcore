@@ -28,12 +28,6 @@ jobs:
       - name: dotnet publish
         run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
 
-      - name: dotnet install ef
-        run: dotnet tool install -g dotnet-ef
-
-      - name: dotnet bundle migration
-        run: dotnet ef migrations bundle -p DotNetCoreSqlDb/DotNetCoreSqlDb.csproj -o ${{env.DOTNET_ROOT}}/myapp/migrate
-
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
@@ -59,5 +53,5 @@ jobs:
         with:
           app-name: 'msdocs-core-sql-ADM'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_329BCF710545435192F3837240006FA2 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_5ECD043E23694A64B2C5A70C0DCA8361 }}
           package: .
